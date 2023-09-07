@@ -1,0 +1,52 @@
+const express = require('express');
+const mysql = require('mysql2');
+const path = require('path');
+
+const app = express();
+const PORT = 3001;
+
+// Set up the middleware to serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Create a MySQL connection
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'attorney_search'
+});
+
+// Set up the endpoint to serve the HTML page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Handle the search requestx`
+app.get('/search', (req, res) => {
+  const searchQuery = req.query.query;
+
+  // Perform the search query in the database
+  // Perform the search query in the database
+  const query = `
+    SELECT attorney_name, attorney_number, document_no AS documentNumber, priority, field, published,
+           cpc_uscl, definition_of_cpc_uscl, title
+    FROM  attorneys__3_
+    WHERE attorney_name LIKE ? OR attorney_number = ? OR cpc_uscl = ?
+  `;
+  const searchTerm = `%${searchQuery}%`;
+
+  connection.query(query, [searchTerm, searchTerm, searchTerm], (err, results) => {
+
+    if (err) {
+      console.error('Error executing search query:', err);
+      return res.status(500).json({ error: 'Error executing search query' });
+    }
+
+    res.json(results);
+  });
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

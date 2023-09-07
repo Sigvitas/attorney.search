@@ -1,0 +1,14 @@
+ host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'attorney_search' 
+
+
+production 
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'isoftdes_surya',
+    password: 'isoftdes.com23',
+    database: 'isoftdes_attorney'
+});

@@ -1,0 +1,83 @@
+/* Reset default margin and padding */
+body,
+h1,
+p,
+table {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #011e3b;
+    /* Blue color for the header */
+    color: #ffffff;
+    /* White text color */
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#searchForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#searchForm input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 300px;
+    /* Set the maximum width to limit the input size */
+}
+
+#searchForm button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #0080ff;
+    /* Blue color for the button */
+    border: 1px solid #0080ff;
+    /* Blue border for the button */
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#searchResults {
+    width: 100%;
+    height: calc(100vh - 150px);
+    /* Adjust height to accommodate the header and search form */
+    max-width: 1487px;
+    margin: 0 auto;
+    overflow-y: auto;
+    /* Add scroll if the table exceeds the height */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #96caee;
+}
